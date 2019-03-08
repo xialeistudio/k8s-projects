@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: default
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command:
+        - sleep
+        - "3600"
+      volumeMounts:
+        - name: ssl-certs
+          mountPath: /root/cert
+          readOnly: false
+  volumes:
+    - name: ssl-certs
+      hostPath: 
+        path: /Users/xialei/k8s
